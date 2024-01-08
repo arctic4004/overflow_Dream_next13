@@ -1,4 +1,5 @@
-import Filter from "@/components/shared/Filter";
+import HomeFilters from "@/components/home/HomeFilters";
+import FilterHome from "@/components/shared/FilterHome";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
@@ -23,12 +24,13 @@ export default function Home() {
           placeholder="Search for questions"
           otherClasses="flex-1"
         />
-        <Filter
+        <FilterHome
           filters={HomePageFilters}
           otherClasses="min-h-[56px] sm:min-w-[170px]"
           containerClasses="hidden max-md:flex"
         />
       </div>
+      <HomeFilters />
     </>
   );
 }

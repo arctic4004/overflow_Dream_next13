@@ -5,22 +5,22 @@ import React from "react";
 import RenderTag from "./RenderTag";
 
 const hotQuestion = [
-  { _id: 1, title: "How do I use express as a custom server in NextJS" },
-  { _id: 2, title: "How do I use express as a custom server in NextJS" },
-  { _id: 3, title: "How do I use express as a custom server in NextJS" },
+  { _id: "1", title: "How do I use express as a custom server in NextJS" },
+  { _id: "2", title: "How do I use express as a custom server in NextJS" },
+  { _id: "3", title: "How do I use express as a custom server in NextJS" },
   {
-    _id: 4,
+    _id: "4",
     title:
       "How do I use express as a custom server in NextJS and custom server in Python",
   },
-  { _id: 5, title: "How do I use express as a custom server in NextJS" },
+  { _id: "5", title: "How do I use express as a custom server in NextJS" },
 ];
 const popularTags = [
-  { _id: 1, name: "javascript", totalQuestions: 5 },
-  { _id: 2, name: "react", totalQuestions: 6 },
-  { _id: 3, name: "nextjs", totalQuestions: 5 },
-  { _id: 4, name: "redux", totalQuestions: 2 },
-  { _id: 5, name: "tailwind", totalQuestions: 10 },
+  { _id: "1", name: "javascript", totalQuestions: 5 },
+  { _id: "2", name: "react", totalQuestions: 6 },
+  { _id: "3", name: "nextjs", totalQuestions: 5 },
+  { _id: "4", name: "redux", totalQuestions: 2 },
+  { _id: "5", name: "tailwind", totalQuestions: 10 },
 ];
 const RightSidebar = () => {
   return (

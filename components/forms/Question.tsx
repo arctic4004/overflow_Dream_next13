@@ -19,12 +19,16 @@ import { QuestionsSchema } from "@/lib/validations";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
-
+import { useRouter, usePathname } from "next/navigation";
 const type: any = "create";
-
-const Question = () => {
+interface MangoUsId {
+  mangoUserId: string;
+}
+const Question = ({ mangoUserId }: MangoUsId) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
   // 1. Define your form.
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
@@ -45,10 +49,11 @@ const Question = () => {
         title: values.title,
         content: values.explanation,
         tags: values.tags,
-        // author:
+        author: JSON.parse(mangoUserId),
       });
 
       // navigate to hame page
+      router.push("/");
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -129,7 +134,7 @@ const Question = () => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
-                  apiKey="process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY"
+                  apiKey="u6hjaeopion0dzu9lc44suq7ivrckjnmjb5u2h9vc5svvfv3"
                   onInit={(evt, editor) => {
                     // @ts-ignore
                     editorRef.current = editor;

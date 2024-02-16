@@ -50,6 +50,7 @@ const Question = ({ mangoUserId }: MangoUsId) => {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mangoUserId),
+        path: pathname,
       });
 
       // navigate to hame page

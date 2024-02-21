@@ -4,6 +4,7 @@ const nextConfig = {
     serverActions: true,
     mdxRs: true,
     serverComponentsExternalPackages: ["mongoose"],
+    swcMinify: false, // it should be false by default
   },
 };
 

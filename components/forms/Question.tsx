@@ -20,11 +20,13 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
+import { useTheme } from "@/context/ThemeProvider";
 const type: any = "create";
 interface MangoUsId {
   mangoUserId: string;
 }
 const Question = ({ mangoUserId }: MangoUsId) => {
+  const { mode } = useTheme();
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -135,7 +137,7 @@ const Question = ({ mangoUserId }: MangoUsId) => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
-                  apiKey="u6hjaeopion0dzu9lc44suq7ivrckjnmjb5u2h9vc5svvfv3"
+                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   onInit={(evt, editor) => {
                     // @ts-ignore
                     editorRef.current = editor;
@@ -169,6 +171,8 @@ const Question = ({ mangoUserId }: MangoUsId) => {
                       "alignright alignjustify | bullist numlist",
                     content_style:
                       "body { font-family:Inter,Arial; font-size:16px }",
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
                 />
               </FormControl>

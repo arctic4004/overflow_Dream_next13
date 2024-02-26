@@ -137,7 +137,7 @@ const Question = ({ mangoUserId }: MangoUsId) => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
-                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+                  apiKey="u6hjaeopion0dzu9lc44suq7ivrckjnmjb5u2h9vc5svvfv3"
                   onInit={(evt, editor) => {
                     // @ts-ignore
                     editorRef.current = editor;

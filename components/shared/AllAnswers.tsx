@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTimestamp } from "@/lib/utils";
 import ParseHTML from "./ParseHTML";
+import Votes from "./Votes";
 interface PropsAllAnswers {
   questionId: string;
   userId: string;
@@ -29,13 +30,13 @@ const AllAnswers = async ({
       </div>
       <div>
         {result.answers.map((answer) => (
-          <article
-            key={answer._id}
-            className="text-dark400_light800 mb-8 flex flex-col-reverse"
-          >
-            <div className="flex items-center justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
-              <div className="">
-                <Link href={`/profile/${answer.author.clerkId}`}>
+          <article key={answer._id} className="light-border border-b py-10">
+            <div className="flex items-center justify-between ">
+              <div className="mb-8 flex w-full flex-col-reverse justify-between gap-5 sm:flex-row sm:items-center sm:gap-2 ">
+                <Link
+                  href={`/profile/${answer.author.clerkId}`}
+                  className="flex items-center justify-start gap-1"
+                >
                   <Image
                     src={answer.author.picture}
                     width={18}
@@ -47,12 +48,22 @@ const AllAnswers = async ({
                     <p className="body-semibold text-dark300_light700">
                       {answer.author.name}
                     </p>
-                    <p className="small-regular text-light400_light500 ml-0.5 mt-0.5 line-clamp-1">
+                    <p className="small-regular text-light400_light500 ml-0.5 mt-0.5 line-clamp-1 ">
                       answered {getTimestamp(answer.createdAt)}
                     </p>
                   </div>
                 </Link>
-                <div className="flex justify-end">VOTING</div>
+                <div className="flex justify-end">
+                  <Votes
+                    type="Answer"
+                    itemId={JSON.stringify(answer.id)}
+                    userId={JSON.stringify(userId)}
+                    upvotes={answer.upvotes.length}
+                    hasupVoted={answer.upvotes.includes(userId)}
+                    downvotes={answer.downvotes.length}
+                    hasdownVoted={answer.downvotes.includes(userId)}
+                  />
+                </div>
               </div>
             </div>
             <ParseHTML data={answer.content} />
